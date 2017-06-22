@@ -14,11 +14,12 @@ var path = require('path')
 const clientConfig = {
   target: 'web',
   entry: {
-    main: './src/main.js',
+    main: '',
   },
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'bundle')
+    filename: 'test.js',
+    path: path.resolve(__dirname, 'bundle'),
+    crossOriginLoading: 'anonymous'
   },  
 }
 
