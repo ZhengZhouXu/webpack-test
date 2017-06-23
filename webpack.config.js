@@ -14,12 +14,13 @@ var path = require('path')
 const clientConfig = {
   target: 'web',
   entry: {
-    main: '',
+    main: './src/main.js',
   },
   output: {
-    filename: 'test.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'bundle'),
-    crossOriginLoading: 'anonymous'
+    chunkFilename: "[name].js",
+    devtoolLineToLine: true
   },  
 }
 

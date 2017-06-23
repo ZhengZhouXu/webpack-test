@@ -1,1 +1,3 @@
-var c = 'c';
+var a = require('./a.js')
+a.hello()
+console.log('module c')
