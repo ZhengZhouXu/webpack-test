@@ -29,7 +29,7 @@
 /******/
 /******/ 	// objects to store loaded and loading chunks
 /******/ 	var installedChunks = {
-/******/ 		1: 0
+/******/ 		3: 0
 /******/ 	};
 /******/
 /******/ 	// The require function
@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "" + ({"0":"test"}[chunkId]||chunkId) + ".js";
+/******/ 		script.src = __webpack_require__.p + "" + chunkId + ".js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -136,7 +136,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "http://www.xuxule.top";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -147,29 +147,65 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__main_css__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__main_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__main_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__my_css__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__my_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__my_css__);
 // var fs = require('fs')
 // console.log('before module b')
 // var b = require('./b')
+// require('style-loader!css-loader!./main.css')
+
 
 var btn = document.getElementById('btn')
-
+// var b = require('./b')
+// var a = require('./a')
+// var c = require('./c')
+console.log("xuxule")
+console.log(6)
 btn.onclick = function () { 
-  __webpack_require__.e/* require.ensure */(0).then((function() {  
-    var c = __webpack_require__(1)
+  
+  __webpack_require__.e/* require.ensure */(2).then((function () {
+    var a = __webpack_require__(3)
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe)
-  __webpack_require__.e/* require.ensure */(0).then((function() {  
-    var c = __webpack_require__(2)
+  __webpack_require__.e/* require.ensure */(1).then((function () {
+    var b = __webpack_require__(4)
   }).bind(null, __webpack_require__)).catch(__webpack_require__.oe)
-  // require(['./c.js'], function (c) {
+  __webpack_require__.e/* require.ensure */(0).then((function () {
+    var c = __webpack_require__(5)
+  }).bind(null, __webpack_require__)).catch(__webpack_require__.oe)
+
+  // require(['./c'], function (c) {
 
   // })
+  // require(['./a'], function (c) {
+    
+  // })
   // require(['./b.js'], function (c) {
+
+  // })
+  // require(['./c.js'], function (c) {
 
   // })
 }
 
 
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
 /***/ })
 /******/ ]);
+//# sourceMappingURL=main.js.map

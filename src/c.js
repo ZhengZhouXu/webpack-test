@@ -1,3 +1,5 @@
 var a = require('./a.js')
+var moment = require('moment')
+var b = require('./b')
 a.hello()
 console.log('module c')

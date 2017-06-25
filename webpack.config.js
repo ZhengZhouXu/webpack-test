@@ -1,27 +1,69 @@
 var path = require('path')
+var htmlWepbackPlugin = require('html-webpack-plugin')
+var webpack = require('webpack')
+var extractTextWebpackPlugin = require('extract-text-webpack-plugin')
 
-// const serverConfig = {
-//   target: 'node',
-//   entry: {
-//     main: './src/main.js',
-//   },
-//   output: {
-//     filename: '[name].node.js',
-//     path: path.resolve(__dirname, 'bundle')
-//   },  
-// }
+var mainExtract = new extractTextWebpackPlugin('main.css')
+var myExtract = new extractTextWebpackPlugin('my.css')
 
 const clientConfig = {
   target: 'web',
   entry: {
     main: './src/main.js',
+    // vendor: ['moment']
   },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'bundle'),
-    chunkFilename: "[name].js",
-    devtoolLineToLine: true
-  },  
+    publicPath: 'http://www.xuxule.top'
+  },
+  module: {
+    rules: [{
+      test: /my\.css$/,
+      use: myExtract.extract({
+        use: 'css-loader'
+      })
+    }, {
+      test: /main\.css$/,
+      use: mainExtract.extract({
+        use: 'css-loader'
+      })
+    }]
+  },
+  devtool: 'source-map',
+  plugins: [
+    // new webpack.optimize.UglifyJsPlugin({
+    //   compress: {
+    //     warnings: false
+    //   },
+    //   sourceMap: false
+    // }),
+    new webpack.DefinePlugin({
+      name: JSON.stringify('xuxule')
+    }),
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new htmlWepbackPlugin ({
+    //   title: 'xuxule',
+    //   template: path.resolve(__dirname, 'index.html')
+    // }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //     //name: 'vendor',
+    //     //names: ['vendor','manifest'], // 指定公共 bundle 的名字。
+    //     //filename: 'common.js',
+    //     //async: true,
+    //     children: true,
+    //     minChunks: 2
+    //     // minChunks: function (module, count) {
+    //     //   return module.resource && /\.js$/.test(module.resource) && module.resource.indexOf(path.resolve(__dirname, './node_modules')) === 0
+    //     // }
+    // }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: 'manifest',
+    //   chunks: ['vendor']
+    // }),
+    myExtract,
+    mainExtract
+  ]
 }
 
 module.exports = [clientConfig]
