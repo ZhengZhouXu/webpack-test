@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "css-loader": "^0.28.4",
+    "eventsource-polyfill": "^0.9.6",
     "exports-loader": "^0.6.4",
     "extract-text-webpack-plugin": "^2.1.2",
     "html-webpack-plugin": "^2.28.0",

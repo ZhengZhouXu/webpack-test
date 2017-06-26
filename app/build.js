@@ -7,17 +7,23 @@ var path = require('path')
 var compiler = webpack(config)
 var app = express()
 
-var devMiddleware = require('webpack-dev-middleware')(compiler, {
-  publicPath: 'xuxule.top',
-  quiet: true
-})
+app.use(require("webpack-dev-middleware")(compiler, {
+  noInfo: true, publicPath: '/'
+}));
 
-var hotMiddleware = require('webpack-hot-middleware')(compiler, {
-  log: () => {}
-})
+// Step 3: Attach the hot middleware to the compiler & the server
+app.use(require("webpack-hot-middleware")(compiler, {
+  log: console.log, path: '/__webpack_hmr', heartbeat: 10 * 1000
+}));
 
-app.use(devMiddleware)
-app.use(hotMiddleware)
+compiler.plugin('compilation', function (compilation) {
+  compilation.plugin('html-webpack-plugin-after-emit', function (data, cb) {
+    hotMiddleware.publish({ action: 'reload' })
+    cb()
+  })
+})
+// app.use(devMiddleware)
+// app.use(hotMiddleware)
 
 // app.get('/', function (req, res) {
 //   return res.sendFile(path.resolve(__dirname, '../bundle/index.html'))

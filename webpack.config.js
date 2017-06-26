@@ -8,14 +8,11 @@ var myExtract = new extractTextWebpackPlugin('my.css')
 
 const clientConfig = {
   target: 'web',
-  entry: {
-    main: './src/main.js',
-    // vendor: ['moment']
-  },
+  entry: ['./src/main.js'],
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'bundle'),
-    publicPath: 'http://www.xuxule.top'
+    publicPath: '/'
   },
   module: {
     rules: [{
@@ -43,6 +40,8 @@ const clientConfig = {
     new webpack.DefinePlugin({
       name: JSON.stringify('xuxule')
     }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new htmlWepbackPlugin ({
       title: 'xuxule',
@@ -69,3 +68,4 @@ const clientConfig = {
 }
 
 module.exports = [clientConfig]
+

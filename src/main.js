@@ -10,18 +10,18 @@ var btn = document.getElementById('btn')
 // var c = require('./c')
 var old = require('./old')
 console.log(name)
-console.log(6)
+console.log(20)
 btn.onclick = function () { 
   
-  require.ensure([], function () {
-    var a = require('./a')
-  })
-  require.ensure([], function () {
-    var b = require('./b')
-  })
-  require.ensure([], function () {
-    var c = require('./c')
-  })
+  // require.ensure([], function () {
+  //   var a = require('./a')
+  // })
+  // require.ensure([], function () {
+  //   var b = require('./b')
+  // })
+  // require.ensure([], function () {
+  //   var c = require('./c')
+  // })
 
   // require(['./c'], function (c) {
 
@@ -36,3 +36,12 @@ btn.onclick = function () {
 
   // })
 }
+
+require('eventsource-polyfill')
+var hotClient = require('webpack-hot-middleware/client?noInfo=true&reload=true')
+
+hotClient.subscribe(function (event) {
+  if (event.action === 'reload') {
+    window.location.reload()
+  }
+})
