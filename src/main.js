@@ -8,6 +8,7 @@ var btn = document.getElementById('btn')
 // var b = require('./b')
 // var a = require('./a')
 // var c = require('./c')
+var old = require('./old')
 console.log(name)
 console.log(6)
 btn.onclick = function () { 
