@@ -28,9 +28,11 @@ const clientConfig = {
       use: mainExtract.extract({
         use: 'css-loader'
       })
+    }, {
+      test: require.resolve('./src/old.js'),
+      use: 'exports-loader?sayHello'
     }]
   },
-  devtool: 'source-map',
   plugins: [
     // new webpack.optimize.UglifyJsPlugin({
     //   compress: {
@@ -42,10 +44,10 @@ const clientConfig = {
       name: JSON.stringify('xuxule')
     }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    // new htmlWepbackPlugin ({
-    //   title: 'xuxule',
-    //   template: path.resolve(__dirname, 'index.html')
-    // }),
+    new htmlWepbackPlugin ({
+      title: 'xuxule',
+      template: path.resolve(__dirname, 'index.html')
+    }),
     // new webpack.optimize.CommonsChunkPlugin({
     //     //name: 'vendor',
     //     //names: ['vendor','manifest'], // 指定公共 bundle 的名字。
