@@ -16,15 +16,8 @@ const clientConfig = {
   },
   module: {
     rules: [{
-      test: /my\.css$/,
-      use: myExtract.extract({
-        use: 'css-loader'
-      })
-    }, {
-      test: /main\.css$/,
-      use: mainExtract.extract({
-        use: 'css-loader'
-      })
+      test: /\.css$/,
+      use: ['style-loader', 'css-loader']
     }, {
       test: require.resolve('./src/old.js'),
       use: 'exports-loader?sayHello'
